@@ -73,7 +73,7 @@
         <button id="buttonTablaTareas" type="button" class="btn btn-secondary">Tareas</button>
     </div>
 
-    <br><br>
+    <br>
     <div id="ContenedorPrincipal">
         <!--Inicio Contenedor Principal-->
         <div id="tablaEmpleados" style="display: block;">
@@ -85,25 +85,28 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Primer Apellido</th>
                         <th scope="col">Segundo Apellido</th>
+                        <th scope="col">DNI</th>
                         <th scope="col">Fecha Alta</th>
                         <th scope="col">Fecha Baja</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody th:each="em : ${empleados}">
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td></td>
-                        <td></td>
-                        <td><button id="buttonVerTareasUsuario" type="button" class="btn btn-info"
-                                value="1">Tareas</button>
+                        <th scope="row" th:text="${em.id}"></th>
+                        <td th:text="${em.nombre}"></td>
+                        <td th:text="${em.apellido1}"></td>
+                        <td th:text="${em.apellido2}"></td>
+                        <td th:text="${em.dni}"></td>
+                        <td th:text="${em.alta}"></td>
+                        <td th:text="${em.baja}"></td>
+                        <td>
+                          <button id="buttonVerTareasUsuario" type="button" class="btn btn-info" value="1">Tareas</button>
                         </td>
-                        <td><button id="buttonModificarUsuario" type="button" class="btn btn-warning"
-                                value="1">Modificar</button></td>
+                        <td>
+                          <button id="buttonModificarUsuario" type="button" class="btn btn-warning" value="1">Modificar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -122,14 +125,16 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody th:each ="ta : ${tareas}">
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Tarea 1</td>
-                        <td>Descrión tarea 1</td>
-                        <td>Fecha Inicio</td>
-                        <td>Fecha Fin</td>
-                        <td><button type="button" class="btn btn-danger">Borrar</button></td>
+                        <th scope="row" th:text="${ta.id}">1</th>
+                        <td th:text="${ta.nombre}">Tarea 1</td>
+                        <td th:text="${ta.descripcion}">Descrión tarea 1</td>
+                        <td th:text="${ta.inicio}">Fecha Inicio</td>
+                        <td th:text="${ta.fin}">Fecha Fin</td>
+                        <td>
+                        <button type="button" class="btn btn-danger">Borrar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
